@@ -1,4 +1,11 @@
-let books = JSON.parse(localStorage.getItem('cataloge'));
+let books;
+
+if (JSON.parse(localStorage.getItem('cataloge'))) {
+  books = JSON.parse(localStorage.getItem('cataloge'));
+} else {
+  books = [];
+}
+
 const file = document.querySelector('.book');
 
 function addBooks(ti, aut) {
@@ -6,7 +13,6 @@ function addBooks(ti, aut) {
   window.localStorage.setItem('cataloge', JSON.stringify(books));
 }
 
-/* eslint-disable */
 function removeBooks(index) {
   books = books.filter((book) => book.id !== index);
 
@@ -15,7 +21,6 @@ function removeBooks(index) {
 
   window.localStorage.setItem('cataloge', JSON.stringify(books));
 }
-/* eslint-enable */
 
 function showBooks() {
   for (let i = 0; i < books.length; i += 1) {
@@ -31,7 +36,7 @@ function showBooks() {
     article.setAttribute('id', i);
     button.setAttribute('class', 'rmv-btn');
     button.setAttribute('id', `rmv-${i}`);
-    button.setAttribute('onclick', `removeBooks(${i})`);
+    button.addEventListener('click', () => removeBooks(i));
 
     article.appendChild(title);
     article.appendChild(author);
