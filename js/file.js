@@ -5,9 +5,9 @@ function addBooks(title,author) {
     books.push({title : title, author : author , id :  books.length});
 }
 
-function removeBooks(id) {
+function removeBooks(index) {
   books = books.filter(book => {
-    book.id !== id;
+   return book.id !== index;
   });
 }
 
