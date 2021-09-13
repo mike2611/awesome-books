@@ -1,11 +1,11 @@
 
-let books = [];
+
+let books = JSON.parse(localStorage.getItem('cataloge'));;
 const file = document.querySelector(".book")
 
 
 function addBooks(ti,aut) {
     books.push({title : ti, author : aut , id :  books.length});
-    
     window.localStorage.setItem('cataloge', JSON.stringify(books));
 }
 
@@ -21,11 +21,11 @@ function removeBooks(index) {
 }
 
 
-addBooks('test', 'testAuthor');
-console.log(books);
-addBooks('test2', 'testAuthor2');
-//removeBooks(1);
-console.log(books);
+// addBooks('test', 'testAuthor');
+// console.log(books);
+// addBooks('test2', 'testAuthor2');
+// //removeBooks(1);
+// console.log(books);
 
 function showBooks(){
 
