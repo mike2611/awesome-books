@@ -1,16 +1,23 @@
 
-let books = [{title : '' , author: '', id: 0}];
-const file = document.querySelector("#book")
+let books = [];
+const file = document.querySelector(".book")
 
 
-function addBooks(title,author) {
-    books.push({title : title, author : author , id :  books.length});
+function addBooks(ti,aut) {
+    books.push({title : ti, author : aut , id :  books.length});
+    
+    window.localStorage.setItem('cataloge', JSON.stringify(books));
 }
 
 function removeBooks(index) {
   books = books.filter(book => {
    return book.id !== index;
   });
+
+  var element = document.getElementById(index);
+    element.parentNode.removeChild(element);
+
+    window.localStorage.setItem('cataloge', JSON.stringify(books));  
 }
 
 
@@ -22,30 +29,39 @@ console.log(books);
 
 function showBooks(){
 
-  books.forEach(i => {
+
+  for(let i=0; i<books.length; i++){   
+    var article = document.createElement("article")
     var title = document.createElement("p")
-    title.innerText = `${i.title}`
-    file.appendChild(title)
     var author = document.createElement("p")
-    author.innerText = `${i.author}`
-    file.appendChild(author)
     var button = document.createElement("button");
-    button.textContent = "Remove"
-    button.setAttribute("id",i.id)
-    file.appendChild(button)
-  });
+    
+    title.innerText = `${books[i].title}`
+    author.innerText = `${books[i].author}`
+    button.textContent = "Remove";
+
+
+    article.setAttribute("id", i)
+    button.setAttribute("class", "rmv-btn")
+    button.setAttribute("id", "rmv-" + i)
+    button.setAttribute("onclick", `removeBooks(${i})`)
+
+    article.appendChild(title)
+    article.appendChild(author)
+    article.appendChild(button)
+
+    file.appendChild(article)
+  }
   
 }
 
 showBooks();
 
-const formAdd = document.querySelector('#form-add');
+const formAdd = document.querySelector('#add-btn');
 const titleInput = document.querySelector('#title');
 const authorInput = document.querySelector('#author');
 
-formAdd.addEventListener('submit', (sub) => {
-     addBooks(titleInput.value, authorInput.value)
+formAdd.addEventListener('click', (sub) => {
+    addBooks(titleInput.value, authorInput.value)
     });
-
 console.log(books)
-
