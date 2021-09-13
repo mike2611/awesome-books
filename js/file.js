@@ -1,3 +1,4 @@
+
 let books = [{title : '' , author: '', id: 0}];
 const file = document.querySelector("#book")
 
@@ -37,3 +38,14 @@ function showBooks(){
 }
 
 showBooks();
+
+const formAdd = document.querySelector('#form-add');
+const titleInput = document.querySelector('#title');
+const authorInput = document.querySelector('#author');
+
+formAdd.addEventListener('submit', (sub) => {
+     addBooks(titleInput.value, authorInput.value)
+    });
+
+console.log(books)
+
