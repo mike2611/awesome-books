@@ -1,57 +1,69 @@
-let books;
+class Book {
+  constructor(arr) {
+    this.books = arr;
+    this.file = document.querySelector('.book');
+  }
 
-if (JSON.parse(localStorage.getItem('cataloge'))) {
-  books = JSON.parse(localStorage.getItem('cataloge'));
-} else {
-  books = [];
-}
+  get book() {
+    return this.books;
+  }
 
-const file = document.querySelector('.book');
+  removeBook(index) {
+    this.books = this.books.filter((book) => book.id !== index);
+    const element = document.getElementById(index);
+    element.parentNode.removeChild(element);
+    this.updateLocalStorage();
+  }
 
-function addBooks(ti, aut) {
-  books.push({ title: ti, author: aut, id: books.length });
-  window.localStorage.setItem('cataloge', JSON.stringify(books));
-}
+  addBook(ti, aut) {
+    this.books.push({ title: ti, author: aut, id: this.books.length });
+    this.updateLocalStorage();
+  }
 
-function removeBooks(index) {
-  books = books.filter((book) => book.id !== index);
+  showBooks() {
+    for (let i = 0; i < this.books.length; i += 1) {
+      const article = document.createElement('article');
+      const title = document.createElement('p');
+      const author = document.createElement('p');
+      const button = document.createElement('button');
 
-  const element = document.getElementById(index);
-  element.parentNode.removeChild(element);
+      title.innerText = `${this.books[i].title}`;
+      author.innerText = `${this.books[i].author}`;
+      button.textContent = 'Remove';
 
-  window.localStorage.setItem('cataloge', JSON.stringify(books));
-}
+      article.setAttribute('id', i);
+      button.setAttribute('class', 'rmv-btn');
+      button.setAttribute('id', `rmv-${i}`);
+      button.addEventListener('click', () => this.removeBook(i));
 
-function showBooks() {
-  for (let i = 0; i < books.length; i += 1) {
-    const article = document.createElement('article');
-    const title = document.createElement('p');
-    const author = document.createElement('p');
-    const button = document.createElement('button');
+      article.appendChild(title);
+      article.appendChild(author);
+      article.appendChild(button);
 
-    title.innerText = `${books[i].title}`;
-    author.innerText = `${books[i].author}`;
-    button.textContent = 'Remove';
+      this.file.appendChild(article);
+    }
+  }
 
-    article.setAttribute('id', i);
-    button.setAttribute('class', 'rmv-btn');
-    button.setAttribute('id', `rmv-${i}`);
-    button.addEventListener('click', () => removeBooks(i));
-
-    article.appendChild(title);
-    article.appendChild(author);
-    article.appendChild(button);
-
-    file.appendChild(article);
+  updateLocalStorage() {
+    window.localStorage.setItem('cataloge', JSON.stringify(this.books));
   }
 }
 
-showBooks();
+let arr;
+
+if (JSON.parse(localStorage.getItem('cataloge'))) {
+  arr = JSON.parse(localStorage.getItem('cataloge'));
+} else {
+  arr = [];
+}
+
+const books = new Book(arr);
+books.showBooks();
 
 const formAdd = document.querySelector('#add-btn');
 const titleInput = document.querySelector('#title');
 const authorInput = document.querySelector('#author');
 
 formAdd.addEventListener('click', () => {
-  addBooks(titleInput.value, authorInput.value);
+  books.addBook(titleInput.value, authorInput.value);
 });
