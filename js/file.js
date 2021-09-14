@@ -1,10 +1,37 @@
-let books;
+class Book {
+
+
+  constructor(arr) {
+    this.books = arr
+  }
+
+  get book() {
+    return this.books
+  }
+  
+  removeBook(index) {
+  	this.books = this.books.filter((book) => book.id !== index);
+  }
+  
+  addBook(ti, aut, id) {
+  	console.log(typeof this.books)
+  	this.books.push({ title: ti, author: aut, id: this.books.length });
+  }
+  
+  
+}
+
+
+let arr;
 
 if (JSON.parse(localStorage.getItem('cataloge'))) {
-  books = JSON.parse(localStorage.getItem('cataloge'));
+  arr = JSON.parse(localStorage.getItem('cataloge'));
 } else {
-  books = [];
+  arr = [];
 }
+
+
+let books = new Book(arr);
 
 const file = document.querySelector('.book');
 
