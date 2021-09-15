@@ -2,6 +2,7 @@ class Book {
   constructor(arr) {
     this.books = arr;
     this.file = document.querySelector('.book');
+    this.article = document.createElement('article');
   }
 
   get book() {
@@ -20,28 +21,51 @@ class Book {
     this.updateLocalStorage();
   }
 
+  returnSpecs(index) {
+    return `"${this.books[index].title}" by ${this.books[index].author}`;
+  }
+
   showBooks() {
     for (let i = 0; i < this.books.length; i += 1) {
-      const article = document.createElement('article');
-      const title = document.createElement('p');
-      const author = document.createElement('p');
+      const newArticle = this.article.cloneNode();
+      const titleAuthor = document.createElement('p');
       const button = document.createElement('button');
 
-      title.innerText = `${this.books[i].title}`;
-      author.innerText = `${this.books[i].author}`;
+      titleAuthor.innerText = this.returnSpecs(i);
       button.textContent = 'Remove';
 
-      article.setAttribute('id', i);
-      button.setAttribute('class', 'rmv-btn');
-      button.setAttribute('id', `rmv-${i}`);
-      button.addEventListener('click', () => this.removeBook(i));
+      newArticle.setAttribute('id', i);
+      newArticle.setAttribute('class', 'd-flex justify-content-between align-items-center article');
+      if (i % 2 !== 0) {
+        newArticle.style.background = 'lightGray';
+      } else {
+        newArticle.style.background = 'white';
+      }
+      titleAuthor.setAttribute('class', 'my-0 mx-2 fw-bold text-capitalize');
+      button.setAttribute('class', 'btn btn-danger m-2');
+      button.addEventListener('click', () => {
+        this.removeBook(i);
+        this.constructor.updateBackground();
+      });
 
-      article.appendChild(title);
-      article.appendChild(author);
-      article.appendChild(button);
+      newArticle.appendChild(titleAuthor);
+      newArticle.appendChild(button);
 
-      this.file.appendChild(article);
+      this.file.appendChild(newArticle);
     }
+  }
+
+  static updateBackground() {
+    let index = 0;
+    const newArticles = document.querySelectorAll('.article');
+    newArticles.forEach((newArticle) => {
+      if (index % 2 !== 0) {
+        newArticle.style.background = 'lightGray';
+      } else {
+        newArticle.style.background = 'white';
+      }
+      index += 1;
+    });
   }
 
   updateLocalStorage() {
