@@ -4,22 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <title>Document</title>
 </head>
-<body>
-    <header>
+<body class="container">
+    <header class="w-100 d-flex justify-content-center">
         <h1>Awesome books</h1>
-        <section class="book">
-            <br>
-        </section>
-        <section>
-            <form id="form-add">
-                <input type="text" placeholder="Title" id="title" name="title">
-                <input type="text" placeholder="Author" id="author" name="author">
-                <button type="submit" id="add-btn">Add</button>
-            </form>
-        </section>
     </header>
+        <section class="book border border-4">
+        </section>
+
+        <section class="w-100 d-flex justify-content-center my-5">
+            <form id="form-add" class="w-50 d-flex flex-column justify-content-center">
+                <h2 class="text-center">Add a new book</h2>
+                <input type="text" class="my-2 form-control" placeholder="Title" id="title" name="title">
+                <input type="text" class="my-2 form-control" placeholder="Author" id="author" name="author">
+                <button type="submit" class="w-25 align-self-end my-2 btn btn-success" id="add-btn">Add</button>
+            </form>
+        </section>  
     <script src="js/file.js"></script>
 </body>
 </html>
