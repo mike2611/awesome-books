@@ -10,29 +10,29 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js"></script>
     <title>Document</title>
-    <script src="js/luxon.min.js"></script>
 </head>
 
 <body>
-    <header>
+    <header class="mb-5 d-flex flex-column">
         <nav class="navbar navbar-expand-lg navbar-light bg-light border">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Awesome Booksss</a>
+                <a class="navbar-brand" href="#">Awesome Books</a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav  ms-auto mb-2 mb-lg-0">
                         <li class="nav-item border-start text-center">
-                            <a class="nav-link" aria-current="page" href="#">List</a>
+                            <a id="listLink" class="nav-link active" href="#">List</a>
                         </li>
                         <li class="nav-item border-start text-center">
-                            <a class="nav-link" href="#">Add New</a>
+                            <a id="addLink" class="nav-link" href="#">Add New</a>
                         </li>
                         <li class="nav-item border-start text-center">
-                            <a class="nav-link" href="#">Contact</a>
+                            <a id="contactLink" class="nav-link" href="#">Contact</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+        <span id="date" class="align-self-end p-2"></span>
     </header>
 
     <section id="date-time" class="d-flex justify-content-end mb-5 mx-5 mt-0" ></section>
@@ -67,10 +67,18 @@
         </section>
     </section>
 
-    <footer class="position-absolute bottom-0 bg-light w-100 border-top pt-3">
-        <p> ©️ 2021 Copyrigth Microverse </p>
+    <footer class="position-absolute bottom-0 bg-light w-100 border-top p-3">
+        <span> ©️ 2021 Copyrigth Microverse </span>
     </footer>
+
+
     <script src="js/file.js"></script>
+    
+    <script>
+        const date = document.querySelector("#date");
+        today = luxon.DateTime.now().toLocaleString(luxon.DateTime.DATETIME_FULL);
+        date.innerHTML = today;
+    </script>
 </body>
 
 </html>
