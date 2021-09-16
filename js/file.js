@@ -91,3 +91,50 @@ const authorInput = document.querySelector('#author');
 formAdd.addEventListener('click', () => {
   books.addBook(titleInput.value, authorInput.value);
 });
+
+const formSection = document.querySelector('#add');
+const showSection = document.querySelector('#show');
+const contactSection = document.querySelector('#contact');
+const listLink = document.querySelector('#listLink');
+const addLink = document.querySelector('#addLink');
+const contactLink = document.querySelector('#contactLink');
+
+const navButtons = document.querySelectorAll('.nav-link');
+
+const addNew = () => {
+  listLink.classList.remove('active');
+  contactLink.classList.remove('active');
+  addLink.classList.add('active');
+
+  formSection.classList.remove('d-none');
+  showSection.classList.add('d-none');
+  contactSection.classList.add('d-none');
+};
+
+const listBooks = () => {
+  listLink.classList.add('active');
+  contactLink.classList.remove('active');
+  addLink.classList.remove('active');
+
+  showSection.classList.remove('d-none');
+  contactSection.classList.add('d-none');
+  formSection.classList.add('d-none');
+};
+
+const contact = () => {
+  contactSection.classList.remove('d-none');
+  showSection.classList.add('d-none');
+  formSection.classList.add('d-none');
+
+  listLink.classList.remove('active');
+  contactLink.classList.add('active');
+  addLink.classList.remove('active');
+
+  contactSection.classList.remove('d-none');
+  showSection.classList.add('d-none');
+  formSection.classList.add('d-none');
+};
+
+navButtons[0].addEventListener('click', listBooks);
+navButtons[1].addEventListener('click', addNew);
+navButtons[2].addEventListener('click', contact);
