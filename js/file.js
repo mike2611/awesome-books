@@ -101,7 +101,7 @@ const contactLink = document.querySelector('#contactLink');
 
 const navButtons = document.querySelectorAll('.nav-link');
 
-addNew = () => {
+const addNew = () => {
   listLink.classList.remove('active');
   contactLink.classList.remove('active');
   addLink.classList.add('active');
@@ -109,9 +109,9 @@ addNew = () => {
   formSection.classList.remove('d-none');
   showSection.classList.add('d-none');
   contactSection.classList.add('d-none');
-}
+};
 
-listBooks = () => {
+const listBooks = () => {
   listLink.classList.add('active');
   contactLink.classList.remove('active');
   addLink.classList.remove('active');
@@ -119,9 +119,9 @@ listBooks = () => {
   showSection.classList.remove('d-none');
   contactSection.classList.add('d-none');
   formSection.classList.add('d-none');
-}
+};
 
-contact = () => {
+const contact = () => {
   contactSection.classList.remove('d-none');
   showSection.classList.add('d-none');
   formSection.classList.add('d-none');
@@ -133,7 +133,7 @@ contact = () => {
   contactSection.classList.remove('d-none');
   showSection.classList.add('d-none');
   formSection.classList.add('d-none');
-}
+};
 
 navButtons[0].addEventListener('click', listBooks);
 navButtons[1].addEventListener('click', addNew);
