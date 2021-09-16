@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js"></script>
     <title>Document</title>
+    <script src="js/luxon.min.js"></script>
 </head>
 
 <body>
@@ -32,6 +33,11 @@
                 </div>
             </div>
         </nav>
+        <p id="para"></p>
+        <script>
+            const date = document.querySelector("#para");
+            date.innerHTML = luxon.DateTime.now();
+        </script>
     </header>
 
     <section id="date-time" class="d-flex justify-content-end mb-5 mx-5 mt-0" ></section>
