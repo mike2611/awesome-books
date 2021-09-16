@@ -101,7 +101,7 @@ const contactLink = document.querySelector('#contactLink');
 
 const navButtons = document.querySelectorAll('.nav-link');
 
-function addNew() {
+addNew = () => {
   listLink.classList.remove('active');
   contactLink.classList.remove('active');
   addLink.classList.add('active');
@@ -111,7 +111,7 @@ function addNew() {
   contactSection.classList.add('d-none');
 }
 
-function listBooks() {
+listBooks = () => {
   listLink.classList.add('active');
   contactLink.classList.remove('active');
   addLink.classList.remove('active');
@@ -121,7 +121,7 @@ function listBooks() {
   formSection.classList.add('d-none');
 }
 
-function contact() {
+contact = () => {
   contactSection.classList.remove('d-none');
   showSection.classList.add('d-none');
   formSection.classList.add('d-none');
