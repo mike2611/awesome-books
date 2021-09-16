@@ -92,36 +92,40 @@ formAdd.addEventListener('click', () => {
   books.addBook(titleInput.value, authorInput.value);
 });
 
+const formSection = document.querySelector('#add');
+const showSection = document.querySelector('#show');
+const contactSection = document.querySelector('#contact');
 
-function addNew() {
+const navButtons = document.querySelectorAll('.nav-link');
 
-  const formSection = document.querySelector("#add");
-  const showSection = document.querySelector("#show");
-  const contactSection = document.querySelector("#contact");
-  formSection.classList.remove("d-none")
-  showSection.classList.add("d-none");  
-  contactSection.classList.add("d-none");
-
+function list() {
+  showSection.classList.remove('d-none');
+  contactSection.classList.add('d-none');
+  formSection.classList.add('d-none');
 }
 
-function listBooks() {
-
-  const formSection = document.querySelector("#add");
-  const showSection = document.querySelector("#show");
-  const contactSection = document.querySelector("#contact");
-  showSection.classList.remove("d-none")
-  contactSection.classList.add("d-none");  
-  formSection.classList.add("d-none");
-
+function addNew() {
+  formSection.classList.remove('d-none');
+  showSection.classList.add('d-none');
+  contactSection.classList.add('d-none');
 }
 
 function contact() {
-
-  const formSection = document.querySelector("#add");
-  const showSection = document.querySelector("#show");
-  const contactSection = document.querySelector("#contact");
-  contactSection.classList.remove("d-none")
-  showSection.classList.add("d-none");  
-  formSection.classList.add("d-none");
-
+  contactSection.classList.remove('d-none');
+  showSection.classList.add('d-none');
+  formSection.classList.add('d-none');
 }
+
+navButtons[0].addEventListener('click', list);
+navButtons[1].addEventListener('click', addNew);
+navButtons[2].addEventListener('click', contact);
+
+function timeDate() {
+  /* global luxon */
+  const { DateTime } = luxon;
+  const date = DateTime.now().toLocaleString(DateTime.DATETIME_MED);
+  const dateSection = document.querySelector('#date-time');
+  dateSection.innerText = date;
+}
+
+timeDate();
