@@ -91,3 +91,37 @@ const authorInput = document.querySelector('#author');
 formAdd.addEventListener('click', () => {
   books.addBook(titleInput.value, authorInput.value);
 });
+
+
+function addNew() {
+
+  const formSection = document.querySelector("#add");
+  const showSection = document.querySelector("#show");
+  const contactSection = document.querySelector("#contact");
+  formSection.classList.remove("d-none")
+  showSection.classList.add("d-none");  
+  contactSection.classList.add("d-none");
+
+}
+
+function listBooks() {
+
+  const formSection = document.querySelector("#add");
+  const showSection = document.querySelector("#show");
+  const contactSection = document.querySelector("#contact");
+  showSection.classList.remove("d-none")
+  contactSection.classList.add("d-none");  
+  formSection.classList.add("d-none");
+
+}
+
+function contact() {
+
+  const formSection = document.querySelector("#add");
+  const showSection = document.querySelector("#show");
+  const contactSection = document.querySelector("#contact");
+  contactSection.classList.remove("d-none")
+  showSection.classList.add("d-none");  
+  formSection.classList.add("d-none");
+
+}
