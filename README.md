@@ -2,7 +2,16 @@
 
 # Awesome Books
 
+>  In this project, you can add and delete your favorite books, these are persisted thanks to your local storage.
 
+## Desktop 💻
+![screenshot](imgs/desktopVersion.png)
+
+## Mobile 📱
+![screenshot](imgs/mobileVersion.png)
+
+## Live Demo
+https://mike2611.github.io/awesome-books/
 
 ## Built with
 
