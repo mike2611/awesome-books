@@ -2,7 +2,9 @@
 
 # Awesome Books
 
+WebApp to add and remove book from list, as part of the Microverse Curriculum
 
+![](./img/screenshot.png)
 
 ## Built with
 
@@ -21,8 +23,8 @@
 To get a local copy up and running follow these simple example steps.
 
 Open terminal
-Clone this project by command git clone https://github.com/mike2611/portfolio.git
-Open index.html in the browser (you can use Live Server extension in Visual Studio Code)
+Clone this project by command git clone https://github.com/kensayo/awesome-books.git
+Open ```index.html``` in the browser (you can use Live Server extension in Visual Studio Code)
 
 - Download/Clone the repository files and navigate to root folder 
 - Open terminal and move to the root folder
